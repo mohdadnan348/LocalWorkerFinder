@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e6f0fa 100%);
+  font-family: 'Inter', sans-serif;
+}
+
+.history-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.history-container h1 {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #1e3a5f, #3b82f6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.loading-state, .empty-state {
+  text-align: center;
+  color: #475569;
+  background: white;
+  padding: 1rem 1.8rem;
+  border-radius: 60px;
+  width: fit-content;
+  margin: 2rem auto;
+  border: 1px solid #eef2ff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.empty-state a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.empty-state a:hover {
+  text-decoration: underline;
+}
+
+.bookings-table {
+  overflow-x: auto;
+  border-radius: 28px;
+  background: white;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+  border: 1px solid #eef2ff;
+  transition: all 0.3s ease;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 28px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 1rem 1.2rem;
+  text-align: left;
+  border-bottom: 1px solid #eef2ff;
+}
+
+th {
+  background-color: #f8fafc;
+  font-weight: 700;
+  color: #1e293b;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+tbody tr {
+  transition: all 0.2s ease;
+}
+
+tbody tr:hover {
+  background-color: #fafcff;
+  transform: scale(1.01);
+}
+
+td {
+  color: #334155;
+  font-size: 0.9rem;
+}
+
+.status-badge {
+  padding: 0.25rem 0.9rem;
+  border-radius: 40px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  display: inline-block;
+}
+
+.status-badge.pending { background: #fef3c7; color: #d97706; }
+.status-badge.accepted { background: #dbeafe; color: #2563eb; }
+.status-badge.ongoing { background: #e0e7ff; color: #4f46e5; }
+.status-badge.completed { background: #d1fae5; color: #059669; }
+.status-badge.cancelled { background: #fee2e2; color: #dc2626; }
+
+.cancel-btn, .review-btn {
+  padding: 0.4rem 1rem;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+  margin-right: 0.5rem;
+}
+
+.cancel-btn {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.cancel-btn:hover {
+  background: #fecaca;
+  transform: translateY(-1px);
+}
+
+.review-btn {
+  background: #e6f0ff;
+  color: #2563eb;
+}
+
+.review-btn:hover {
+  background: #bfdbfe;
+  transform: translateY(-1px);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 32px;
+  width: 90%;
+  max-width: 440px;
+  border: 1px solid #eef2ff;
+  box-shadow: 0 25px 40px rgba(0, 0, 0, 0.1);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.review-form label {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 0.9rem;
+}
+
+.review-form select, .review-form textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 28px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  background: #fefefe;
+  transition: all 0.2s ease;
+  color: #0f172a;
+}
+
+.review-form select:focus, .review-form textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.review-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.modal-buttons button {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.confirm {
+  background: linear-gradient(95deg, #10b981, #059669);
+  color: white;
+}
+
+.confirm:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(95deg, #34d399, #10b981);
+}
+
+.cancel {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.cancel:hover {
+  background: #e2e8f0;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .history-container {
+    padding: 1.5rem 1rem;
+  }
+  .history-container h1 {
+    font-size: 1.8rem;
+  }
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  thead {
+    display: none;
+  }
+  tr {
+    margin-bottom: 1rem;
+    border: 1px solid #eef2ff;
+    border-radius: 24px;
+    padding: 0.8rem;
+    background: white;
+  }
+  td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: none;
+    font-size: 0.85rem;
+  }
+  td:before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: #1e293b;
+    width: 40%;
+  }
+  td:last-child {
+    border-bottom: none;
+  }
+  .cancel-btn, .review-btn {
+    width: 100%;
+    margin-top: 0.3rem;
+  }
+}

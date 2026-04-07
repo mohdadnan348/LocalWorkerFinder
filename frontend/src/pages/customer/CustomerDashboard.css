@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e6f0fa 100%);
+  font-family: 'Inter', sans-serif;
+}
+
+.customer-dashboard {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.dashboard-header h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #1e3a5f, #3b82f6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.dashboard-header p {
+  color: #5b6e8c;
+  font-size: 1.05rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.stat-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 28px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid #eef2ff;
+  animation: fadeScale 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1) backwards;
+  animation-delay: calc(0.05s * var(--order, 0));
+}
+
+.stat-card:nth-child(1) { --order: 1; }
+.stat-card:nth-child(2) { --order: 2; }
+.stat-card:nth-child(3) { --order: 3; }
+.stat-card:nth-child(4) { --order: 4; }
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.06);
+  border-color: #bfdbfe;
+}
+
+@keyframes fadeScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.stat-card h3 {
+  color: #5b6e8c;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.75rem;
+}
+
+.stat-number {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.stat-card.pending .stat-number { color: #f59e0b; }
+.stat-card.completed .stat-number { color: #10b981; }
+.stat-card.cancelled .stat-number { color: #ef4444; }
+
+.quick-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+.action-btn {
+  padding: 0.85rem 1.8rem;
+  border-radius: 48px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  font-size: 0.95rem;
+}
+
+.action-btn.primary {
+  background: linear-gradient(95deg, #2563eb, #1e40af);
+  color: white;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.action-btn.primary:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(95deg, #3b82f6, #1e3a8a);
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
+}
+
+.action-btn.secondary {
+  background: white;
+  color: #1e40af;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.action-btn.secondary:hover {
+  background: #f1f5f9;
+  transform: translateY(-2px);
+  border-color: #bfdbfe;
+}
+
+.recent-bookings {
+  background: white;
+  border-radius: 28px;
+  padding: 1.8rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+  border: 1px solid #eef2ff;
+  transition: all 0.3s ease;
+}
+
+.recent-bookings h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.3px;
+}
+
+.bookings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.booking-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.booking-item:hover {
+  background: #f1f5f9;
+  transform: translateX(4px);
+}
+
+.booking-info {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.service-name {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.booking-date {
+  color: #5b6e8c;
+  font-size: 0.85rem;
+}
+
+.booking-status {
+  padding: 0.25rem 0.9rem;
+  border-radius: 40px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.booking-status.pending { background: #fef3c7; color: #d97706; }
+.booking-status.accepted { background: #dbeafe; color: #2563eb; }
+.booking-status.ongoing { background: #e0e7ff; color: #4f46e5; }
+.booking-status.completed { background: #d1fae5; color: #059669; }
+.booking-status.cancelled { background: #fee2e2; color: #dc2626; }
+
+.booking-amount {
+  font-weight: 800;
+  color: #0f172a;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .customer-dashboard {
+    padding: 1.5rem 1rem;
+  }
+  .dashboard-header h1 {
+    font-size: 1.8rem;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .quick-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem;
+  }
+  .action-btn {
+    text-align: center;
+  }
+  .booking-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .booking-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+}
